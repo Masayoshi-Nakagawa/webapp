@@ -96,7 +96,9 @@ if selected=="ホーム":
         </div>
     </div>
 </section>
-
+<div>
+    <video controls loop><source src="./app/static/imagecreation.mp4"></video>
+</div>
 <section class="bg-white text-white" id="showcases1">
     <div class="row border m-3 bg-custom-green">
         <div class="col-md-3 rounded-image">
