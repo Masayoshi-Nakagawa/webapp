@@ -172,6 +172,10 @@ if selected=="ホーム":
 </body>
 </html>
 
+<div>
+    <video controls loop><source src="./app/static/imagecreation.mp4"></video>
+</div>
+
 <!-- ランキング -->
 <div class="text-dark mt-5 ms-2">
     <h1>ランキング</h1>
