@@ -269,7 +269,6 @@ if selected=="our vision":
 """,unsafe_allow_html=True)
     
 if selected=="レコメンド":
-    st.markdown("""
 #print("start program")
 num=33504#len(df["ncode"])#100
 path=f"./data/{num}"
@@ -355,7 +354,6 @@ if sq_ratio and ncode:
             #st.write('Qスコア:', f"{row.pre_Q}")
             #st.write('Sスコア:', f"{row.Similarity}")
             st.link_button("この小説を読む", f"https://ncode.syosetu.com/{row.ncode}")
-""",unsafe_allow_html=True)
 
     
 if selected=="画像生成":
