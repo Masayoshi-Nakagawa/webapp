@@ -268,92 +268,92 @@ if selected=="our vision":
 </html>
 """,unsafe_allow_html=True)
     
-if selected=="レコメンド":
-#print("start program")
-num=33504#len(df["ncode"])#100
-path=f"./data/{num}"
-#os.makedirs(path, exist_ok=True)
+# if selected=="レコメンド":
+# #print("start program")
+# num=33504#len(df["ncode"])#100
+# path=f"./data/{num}"
+# #os.makedirs(path, exist_ok=True)
 
-# データフレームを最初に読み込む
-#@st.cache(allow_output_mutation=True)
-@st.cache_data()
-def load_data(path_):
-    return pd.read_pickle(
-        path_
-        #os.path.join(path, 'pre_Q.pkl.gz')
-        , compression='gzip')
+# # データフレームを最初に読み込む
+# #@st.cache(allow_output_mutation=True)
+# @st.cache_data()
+# def load_data(path_):
+#     return pd.read_pickle(
+#         path_
+#         #os.path.join(path, 'pre_Q.pkl.gz')
+#         , compression='gzip')
 
 
-#df=pd.read_pickle(os.path.join(path,'pre_Q.pkl.gz'), compression='gzip') # 圧縮有り
-#print("loading data...")
-df = load_data("./100.pkl.gz")
-#print("loaded ")
+# #df=pd.read_pickle(os.path.join(path,'pre_Q.pkl.gz'), compression='gzip') # 圧縮有り
+# #print("loading data...")
+# df = load_data("./100.pkl.gz")
+# #print("loaded ")
 
-#####stゾーン開始
-#入力項目
-st.title('レコメンドシステム')
-with st.form("form"):
-    ncode = df["ncode"][df["title"]==st.selectbox(
-        "小説を選択",
-        df["title"].tolist()
-    )].iloc[-1]
-    sq_ratio=st.slider('S・Qスコアの割合(値を大きくすると選択した小説に近いものがレコメンドされやすくなります):', min_value=0, max_value=100, value=66)
-    #if sq_ratio:
-    sq_ratio=(sq_ratio/100,1-sq_ratio/100)
-    #else:sq_ratio=()
-    n = st.number_input('表示数', value=10, step=10)
-    is_calc = st.form_submit_button("submit")
+# #####stゾーン開始
+# #入力項目
+# st.title('レコメンドシステム')
+# with st.form("form"):
+#     ncode = df["ncode"][df["title"]==st.selectbox(
+#         "小説を選択",
+#         df["title"].tolist()
+#     )].iloc[-1]
+#     sq_ratio=st.slider('S・Qスコアの割合(値を大きくすると選択した小説に近いものがレコメンドされやすくなります):', min_value=0, max_value=100, value=66)
+#     #if sq_ratio:
+#     sq_ratio=(sq_ratio/100,1-sq_ratio/100)
+#     #else:sq_ratio=()
+#     n = st.number_input('表示数', value=10, step=10)
+#     is_calc = st.form_submit_button("submit")
 
-# コサイン類似度と数値のカラムの値を計算する関数
-def calculate_similarity(row,specified_vector):
-    if row['ncode'] != ncode:
-        other_vector = row['vecs']
-        similarity = cosine_similarity([specified_vector], [other_vector])[0][0]*100
-        total_numeric_column_value = (row['pre_Q']*(sq_ratio[1]/sum(sq_ratio))) + (similarity*(sq_ratio[0]/sum(sq_ratio)))
-        return similarity, total_numeric_column_value
-    else:
-        return 0, 0
+# # コサイン類似度と数値のカラムの値を計算する関数
+# def calculate_similarity(row,specified_vector):
+#     if row['ncode'] != ncode:
+#         other_vector = row['vecs']
+#         similarity = cosine_similarity([specified_vector], [other_vector])[0][0]*100
+#         total_numeric_column_value = (row['pre_Q']*(sq_ratio[1]/sum(sq_ratio))) + (similarity*(sq_ratio[0]/sum(sq_ratio)))
+#         return similarity, total_numeric_column_value
+#     else:
+#         return 0, 0
 
-if sq_ratio and ncode:
-    #選択した小説
-    st.title('選択した小説')
-    #slc=df[['ncode', 'pre_Q','biggenre','genre','writer','title','story','keyword']][df['ncode'] == ncode]
-    slc=df[df['ncode'] == ncode]
-    with st.expander(slc["title"].iloc[-1]):
-        st.write('タイトル:', slc["title"].iloc[-1])
-        st.write('あらすじ:', slc["story"].iloc[-1])
-        st.write('作者:', slc["writer"].iloc[-1])
-        st.write('キーワード:', slc["keyword"].iloc[-1])
-        st.write('お気に入り数(?):', int(slc["fav_novel_cnt"].iloc[-1]))
-        st.write('インプレッション:', f"{int(slc['impression_cnt'].iloc[-1])}")
-        st.write('Qスコア:', f"{slc['pre_Q'].iloc[-1]}")
-        #bt = st.form_submit_button("意味のないボタン")
+# if sq_ratio and ncode:
+#     #選択した小説
+#     st.title('選択した小説')
+#     #slc=df[['ncode', 'pre_Q','biggenre','genre','writer','title','story','keyword']][df['ncode'] == ncode]
+#     slc=df[df['ncode'] == ncode]
+#     with st.expander(slc["title"].iloc[-1]):
+#         st.write('タイトル:', slc["title"].iloc[-1])
+#         st.write('あらすじ:', slc["story"].iloc[-1])
+#         st.write('作者:', slc["writer"].iloc[-1])
+#         st.write('キーワード:', slc["keyword"].iloc[-1])
+#         st.write('お気に入り数(?):', int(slc["fav_novel_cnt"].iloc[-1]))
+#         st.write('インプレッション:', f"{int(slc['impression_cnt'].iloc[-1])}")
+#         st.write('Qスコア:', f"{slc['pre_Q'].iloc[-1]}")
+#         #bt = st.form_submit_button("意味のないボタン")
 
-    #
-    specified_vector = df.loc[df['ncode'] == ncode, 'vecs'].values[0] #触らない
+#     #
+#     specified_vector = df.loc[df['ncode'] == ncode, 'vecs'].values[0] #触らない
 
-    # 各行に対してコサイン類似度と数値のカラムの値を計算し、新しい列に追加
-    df[['Similarity', 'Total_Numeric_Column_Value']] = df[["ncode","vecs","pre_Q"]].apply(lambda x:calculate_similarity(x,specified_vector), axis=1, result_type='expand')
+#     # 各行に対してコサイン類似度と数値のカラムの値を計算し、新しい列に追加
+#     df[['Similarity', 'Total_Numeric_Column_Value']] = df[["ncode","vecs","pre_Q"]].apply(lambda x:calculate_similarity(x,specified_vector), axis=1, result_type='expand')
 
-    # 合計値が大きい順に表示
-    top_n_records = df.nlargest(n, 'Total_Numeric_Column_Value')
+#     # 合計値が大きい順に表示
+#     top_n_records = df.nlargest(n, 'Total_Numeric_Column_Value')
     
-    #各小説を表示
-    #with st.expander("各小説を表示"):
-    st.title('レコメンドされた作品')
-    for row in top_n_records.itertuples():
-        #print(type(row.fav_novel_cnt))
-        with st.expander(f'{row.title}'):
-            st.write('タイトル:', row.title)
-            st.write('あらすじ:', row.story)
-            st.write('作者:', row.writer)
-            st.write('キーワード:', row.keyword)  
-            st.write('お気に入り数:', int(row.fav_novel_cnt))
-            st.write('インプレッション:', int(row.impression_cnt))
-            st.write('総合点:', f"{row.Total_Numeric_Column_Value}\n(内訳 Sスコア:{row.Similarity} Qスコア:{row.pre_Q})")
-            #st.write('Qスコア:', f"{row.pre_Q}")
-            #st.write('Sスコア:', f"{row.Similarity}")
-            st.link_button("この小説を読む", f"https://ncode.syosetu.com/{row.ncode}")
+#     #各小説を表示
+#     #with st.expander("各小説を表示"):
+#     st.title('レコメンドされた作品')
+#     for row in top_n_records.itertuples():
+#         #print(type(row.fav_novel_cnt))
+#         with st.expander(f'{row.title}'):
+#             st.write('タイトル:', row.title)
+#             st.write('あらすじ:', row.story)
+#             st.write('作者:', row.writer)
+#             st.write('キーワード:', row.keyword)  
+#             st.write('お気に入り数:', int(row.fav_novel_cnt))
+#             st.write('インプレッション:', int(row.impression_cnt))
+#             st.write('総合点:', f"{row.Total_Numeric_Column_Value}\n(内訳 Sスコア:{row.Similarity} Qスコア:{row.pre_Q})")
+#             #st.write('Qスコア:', f"{row.pre_Q}")
+#             #st.write('Sスコア:', f"{row.Similarity}")
+#             st.link_button("この小説を読む", f"https://ncode.syosetu.com/{row.ncode}")
 
     
 if selected=="画像生成":
