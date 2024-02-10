@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
 import os
-from sklearn.metrics.pairwise import cosine_similarity
+
 
 image = Image.open('logo_novel1.png')
 st.image(image)
