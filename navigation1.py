@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
 import os
-
+from PIL import Image
 
 image = Image.open('logo_novel1.png')
 st.image(image)
