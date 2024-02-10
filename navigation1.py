@@ -153,6 +153,7 @@ if selected=="ホーム":
     
 </body>
 </html>
+""",unsafe_allow_html=True)
     
 # our visionページ
 if selected=="our vision":
