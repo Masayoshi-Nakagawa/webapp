@@ -350,4 +350,3 @@ if selected=="our vision":
 
     
 if selected=="画像生成":
-    st.markdown("[画像生成](html_access)",unsafe_allow_html=True)
