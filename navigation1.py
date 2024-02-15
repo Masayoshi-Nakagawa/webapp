@@ -3,7 +3,6 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import os
 from PIL import Image
-import config
 
 image = Image.open('logo_novel1.png')
 st.image(image)
@@ -145,7 +144,7 @@ if selected=="ホーム":
     
 </body>
 </html>
-""",unsafe_allow_html=True)
+""",unsafe_allow_html=True,enableStaticServing = True)
     
 # our visionページ
 if selected=="our vision":
