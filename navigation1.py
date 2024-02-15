@@ -78,7 +78,7 @@ if selected=="ホーム":
 <section class="bg-white text-black"> <!-- 背景色を白、文字色を黒に変更 -->
     <div class="row border m-3 bg-custom-green container ">
         <div class="col-md-1 rounded-image">
-            <img src="app/static/image0.jpeg" alt="Your Image"> <!-- 画像を挿入 -->
+            <img src="./app/static/image0.jpeg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
         <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">空へ</a></h3> <!-- リンクの文字色も黒に変更 -->
@@ -92,7 +92,7 @@ if selected=="ホーム":
 <section class="bg-white text-black">
     <div class="row border m-3 bg-custom-green container ">
         <div class="col-md-1 rounded-image">
-            <img src="app/static/image1.jpg" alt="Your Image"> <!-- 画像を挿入 -->
+            <img src="./app/static/image1.jpg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
         <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">春の出会い</a></h3>
@@ -108,7 +108,7 @@ if selected=="ホーム":
 <section class="bg-white text-black" >
     <div class="row border m-3 bg-custom-green container ">
         <div class="col-md-1 rounded-image ">
-            <img src="app/static/image2.jpg" alt="Your Image"> <!-- 画像を挿入 -->
+            <img src="./app/static/image2.jpg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
         <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">あなたの心に届けたい</a></h3>
@@ -121,7 +121,7 @@ if selected=="ホーム":
 <section class="bg-white text-black">
     <div class="row border m-3 bg-custom-green container ">
         <div class="col-md-1 rounded-image">
-            <img src="app/static/image3.png" alt="Your Image"> 
+            <img src="./app/static/image3.png" alt="Your Image"> 
         </div>
         <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">金魚鉢を眺めながら</a></h3>
@@ -165,7 +165,7 @@ if selected=="our vision":
 <section class="text-white" id="hero">
     <style>
         .hero-background {
-            background-image: url(app/static/hero.jpg);
+            background-image: url(./app/static/hero.jpg);
             background-size: cover;
             background-position: center;
             height: 100vh;
