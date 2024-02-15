@@ -5,8 +5,6 @@ import os
 from PIL import Image
 import config
 
-os.environ["STREAMLIT_SERVER_ENABLE_STATIC_SERVING"] = "true"
-
 image = Image.open('logo_novel1.png')
 st.image(image)
 
