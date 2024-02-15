@@ -3,8 +3,7 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import os
 from PIL import Image
-
-os.environ["STREAMLIT_SERVER_ENABLE_STATIC_SERVING"] = "true"
+import config.py
 
 image = Image.open('logo_novel1.png')
 st.image(image)
