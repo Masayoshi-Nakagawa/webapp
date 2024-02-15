@@ -16,7 +16,12 @@ options=["ホーム","our vision","レコメンド", "画像生成"],
 if selected=="ホーム":
     st.markdown("""
 <!-- css -->
-<style>
+<style>      
+    .container {
+        display: flex;
+        align-items: center;
+    }
+               
     .bg-custom-green {
         background-color: white; /* 背景色を白に変更 */
         border-radius: 10px;
@@ -34,24 +39,26 @@ if selected=="ホーム":
         width: 100%; /* 親要素に対して100%の幅 */
         height: auto; /* 高さは自動調整 */
         object-fit: cover; /* アスペクト比を保ったまま画像を表示 */
+        margin-right: 20px
     }
 
     .text-move {
         margin-left: 5px;
         white-space: nowrap;
         line-height: 1.2;
+        white-space: pre-line;
+        font-size: 18px; /* テキストのサイズを適切に設定 */
     }
+                        
     @media (max-width: 768px) {
     .text-move {
             margin-left: 5px;
             white-space: normal; /* 折り返し可能にする */
             max-height: none; /* 高さの制限を解除 */
             overflow: visible; /* オーバーフローの表示を可能に */
+            font-size: 18px; /* テキストのサイズを適切に設定 */
         }
     }
-</style>
-<!-- 小説あらすじの折り返しスタイル -->
-<style>
     #novel {
         word-wrap: break-word;
     }
@@ -59,11 +66,7 @@ if selected=="ホーム":
         max-width: 100%;
         height: auto;
     }
-    .text-move {
-        white-space: pre-line;
-    }
 </style>
-</head>
 
 <body>
     <!-- 初めに -->
@@ -73,30 +76,28 @@ if selected=="ホーム":
 <!-- 作品表示 -->
 <h2 id="novel" class="text-dark mt-1 ms-2">注目作品</h2>
 <section class="bg-white text-black"> <!-- 背景色を白、文字色を黒に変更 -->
-    <div class="row border m-3 mt-1 bg-custom-green border-success">
-        <div class="col-md-3 rounded-image">
-            <img src="image0.jpg" alt="Your Image"> <!-- 画像を挿入 -->
+    <div class="row border m-3 bg-custom-green container ">
+        <div class="col-md-1 rounded-image">
+            <img src="./app/static/image0.jpeg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">空へ</a></h3> <!-- リンクの文字色も黒に変更 -->
             <p class="text-move">あらすじ:<br> 
-                高校生の夏休み、天文部員の少年は偶然見つけた古びた望遠鏡で星を観察する。
-                不思議な力に導かれ、星座がかたち取る魔法の扉が開かれる。
-                彼は友達と共に、星の世界へ飛び込む決断をする。
-                未知なる冒険が彼らを待ち受け、夢と冒険が交錯する空の旅が始まる。</p>
+            少年は星空を眺めるのが大好きだった。ある晩、彼は隣人の少女と出会い、彼女も同じく星に魅了されていた。二人は星座の物語を語り合った。やがて、彼らは星々の輝きに導かれ、彼らは未知の世界へと向かう。果たして、彼らの冒険はどんな結末を迎えるのか、空と星が語る物語が始まる。</p>
         </div>
     </div>
 </section>
 
 
-<section class="bg-white text-black" id="showcases1">
-    <div class="row border m-3 bg-custom-green border-success">
-        <div class="col-md-3 rounded-image">
+<section class="bg-white text-black">
+    <div class="row border m-3 bg-custom-green container ">
+        <div class="col-md-1 rounded-image">
             <img src="./app/static/image1.jpg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">春の出会い</a></h3>
-            <p class="text-move">あらすじ:<br>春風が心地よく舞い、桜の花びらが舞い散る季節。新しい出会いの予感が胸に満ちる。微笑みが咲く街で、心と心が繋がる瞬間。春の温かさが、未知の世界への扉を開く。新たな出会いが、人生を彩る幸せな一節の始まりだ。</p>
+            <p class="text-move">あらすじ:<br>
+            新学期が始まり、転校生の少女が学校にやって来る。彼女は内気で不安そうだったが、クラスメイトたちが温かく迎え入れる。彼らとの日々の交流の中で、彼女は次第に自信を取り戻し、新たな友情を築いていく。そして、ある日の春の遠足で、彼女は特別な人と出会い、新しい学校生活に希望を見出す。</p>
         </div>
     </div>
 </section>
@@ -104,38 +105,28 @@ if selected=="ホーム":
 <!-- ランキング -->
 <div class="text-dark mt-5 ms-2">
 <h1>ランキング</h1>
-<section class="bg-white text-black" id="showcases2">
-    <div class="row border m-3 mt-1 bg-custom-green border-success">
-        <div class="col-md-3 rounded-image">
-            <img src="image2.jpg" alt="Your Image"> <!-- 画像を挿入 -->
+<section class="bg-white text-black" >
+    <div class="row border m-3 bg-custom-green container ">
+        <div class="col-md-1 rounded-image ">
+            <img src="./app/static/image2.jpg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">あなたの心に届けたい</a></h3>
             <p class="text-move">あらすじ:<br>
-                孤独なアンドロイドが感情を持ち、人間の心に触れたいと望む。
-                彼女は感情データを学ぶ中で、音楽と出会い心を開く。
-                ある日、彼女は音楽の力で人々の心に感動と愛を届けることを決意。
-                感動の連鎖が始まり、彼女の存在が心に寄り添う。
-                アンドロイドの愛と感動が、冷たい鋼鉄の身体を超えて、温かな心を広げていく。
-            </p>
+            寂しい少女が路地で迷子の子猫を見つけ、一緒に暮らすことになる。猫の存在が彼女の心を癒し、彼女も猫に愛情を注ぐ。二人はお互いの存在で勇気を与え合い、困難を乗り越えながらも幸せな日々を過ごす。そして、彼らの絆は周りの人々にも広がり、愛と優しさが溢れる温かな世界が広がっていく。</p>
         </div>
     </div>
 </section>
 
-<section class="bg-white text-black" id="showcases3">
-    <div class="row border m-3 bg-custom-green border-success">
-        <div class="col-md-3 rounded-image">
-            <img src="image3.jpg" alt="Your Image"> 
+<section class="bg-white text-black">
+    <div class="row border m-3 bg-custom-green container ">
+        <div class="col-md-1 rounded-image">
+            <img src="./app/static/image3.png" alt="Your Image"> 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">金魚鉢を眺めながら</a></h3>
             <p class="text-move">あらすじ:<br>
-                窓辺の金魚鉢を眺めながら、女性は遠い思い出に浸る。
-                幼少の頃、祖母が教えてくれた金魚の名前や不思議な話。
-                懐かしい言葉と潤んだ瞳で、彼女は過去と現在をつなぐ。
-                金魚の泳ぎが時間の流れを感じさせ、心は穏やかになる。
-                窓辺の小宇宙で、彼女は時折り祖母の微笑みを感じ、大切な思い出を静かに抱える。
-            </p>
+            孤独な老人が日々金魚鉢を眺める生活を送る中、ある日、彼は隣に引っ越してきた少年に出会う。その少年は老人の金魚鉢に興味を持ち、二人は金魚の世界に夢中になる。会話を通じて心を通わせ、老人は少年に人生の知恵を、少年は老人に活力を与える。金魚鉢を通じて結ばれた二人の心温まる交流が始まる。</p>
         </div>
     </div>
 </section>
@@ -219,6 +210,21 @@ if selected=="our vision":
     </div>
 </section>
 
+<section> 
+  <style>
+    .video-container {
+        text-align: center;
+    }
+    .video-container video {
+        width: 80%;
+        height: auto;
+    }
+  </style>
+  <div class="video-container">
+　<video controls loop><source src="./app/static/novelrecommendation.mp4"></video>
+  </div>
+</section>
+                
 <!-- CTA -->
 <section class="bg-success py-5">
     <div class="container overflow-hidden">
@@ -239,8 +245,7 @@ if selected=="our vision":
         本当に届けたい相手に作品が<span class="text-success fw-bold">届いていない</span>気がする
     </p>
     <p>そんな状況をNovel.+で乗り越えましょう</p>
-</div>
-
+</div>             
  <!-- Bootstrapのフッター -->
 <footer class="footer">
 <div class="container text-black text-end my-0">
@@ -258,7 +263,9 @@ if selected=="our vision":
 </script> 
 
 </body>
-</html>
+</html>         
+
+   
 """,unsafe_allow_html=True)
     
 # if selected=="レコメンド":
