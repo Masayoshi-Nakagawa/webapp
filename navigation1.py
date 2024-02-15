@@ -144,7 +144,7 @@ if selected=="ホーム":
     
 </body>
 </html>
-""",unsafe_allow_html=True,enableStaticServing = True)
+""",unsafe_allow_html=True)
     
 # our visionページ
 if selected=="our vision":
