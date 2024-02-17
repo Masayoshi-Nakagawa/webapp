@@ -78,7 +78,7 @@ if selected=="ホーム":
 <section class="bg-white text-black"> <!-- 背景色を白、文字色を黒に変更 -->
     <div class="row border m-3 bg-custom-green container ">
         <div class="col-md-1 rounded-image">
-            <img src="static/image0.jpeg" alt="Your Image"> <!-- 画像を挿入 -->
+            <img src="/static/image0.jpeg" alt="Your Image"> <!-- 画像を挿入 -->
         </div>
         <div class="col-md-9 text">
             <h3 class="text-move"><a class="text-success" href="read.html">空へ</a></h3> <!-- リンクの文字色も黒に変更 -->
